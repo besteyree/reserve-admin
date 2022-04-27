@@ -18,6 +18,10 @@ body {
   color: #444444;
 }
 
+.sizekami{
+  width: 50px;
+}
+
 a {
   color: #4154f1;
   text-decoration: none;
@@ -555,11 +559,11 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #aab7cf;
 }
 
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
   #main, #footer {
     margin-left: 300px;
   }
-}
+} */
 @media (max-width: 1199px) {
   .toggle-sidebar .sidebar {
     left: 0;
@@ -1050,11 +1054,11 @@ h1, h2, h3, h4, h5, h6 {
 .error-404 .btn:hover {
   background: #3e4f6f;
 }
-@media (min-width: 992px) {
+/* @media (min-width: 992px) {
   .error-404 img {
     max-width: 50%;
   }
-}
+} */
 
 /*--------------------------------------------------------------
 # Footer

@@ -16,6 +16,10 @@ export const ActionTypes = {
 
     LIST_TABLE: 'LIST_TABLE',
 
+    LIST_SMS: 'LIST_SMS',
+
+    // REMOVE: 'REMOVE',
+
 
     // GET_FLOOR_ID: "GET_FLOOR_ID",
 

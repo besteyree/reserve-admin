@@ -5,6 +5,7 @@ const initialState = {
   restaurantsdetails: [],
   listtabletype: [],
   listtable: [],
+  listsms: [],
 };
 
 export const restaurantReducer = (state = initialState, { type, payload }) => {
@@ -20,6 +21,12 @@ export const restaurantReducer = (state = initialState, { type, payload }) => {
 
     case ActionTypes.LIST_TABLE:
       return { ...state, listtable: payload };
+
+    case ActionTypes.LIST_SMS:
+      return { ...state, listsms: payload };
+
+    // case ActionTypes.REMOVE:
+    //   return {};
     default:
       return state;
   }

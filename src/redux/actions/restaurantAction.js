@@ -28,3 +28,16 @@ export const getlistTable = (listtable) => {
         payload: listtable,
     }
 }
+
+export const getlistSms = (listsms) => {
+    return{
+        type: ActionTypes.LIST_SMS,
+        payload: listsms,
+    }
+}
+
+// export const removeSelected = () => {
+//     return{
+//         type: ActionTypes.REMOVE,
+//     }
+// }

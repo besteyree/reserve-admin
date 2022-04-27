@@ -10,6 +10,40 @@
   /**
    * Easy selector helper function
    */
+
+  //  function reloadPage() {
+  //   // The last "domLoading" Time //
+  //   var currentDocumentTimestamp =
+  //   new Date(performance.timing.domLoading).getTime();
+  //   // Current Time //
+  //   var now = Date.now();
+  //   // Ten Seconds //
+  //   var tenSec = 10 * 1000;
+  //   // Plus Ten Seconds //
+  //   var plusTenSec = currentDocumentTimestamp + tenSec;
+  //   if (now > plusTenSec) {
+  //   location.reload();
+  //   } else {}
+  //   }
+  //   window.onload = reloadPage();
+
+
+// $(document).ready(function(){    
+//     if(document.URL.indexOf("#")==-1){ //Check if the current URL contains '#'
+//         url = document.URL+"#"; // use "#". Add hash to URL
+//         location = "#";
+//         location.reload(true); //Reload the page
+//     }
+// });
+
+
+
+
+    // const reloadUsingLocationHash = () => {
+    //   window.location.hash = "reload";
+    // }
+    // window.onload = reloadUsingLocationHash();
+  
   const select = (el, all = false) => {
     el = el.trim()
     if (all) {

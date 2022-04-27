@@ -5,21 +5,24 @@ import { FaLevelUpAlt } from "react-icons/fa";
 // import { MdOutlineCreate } from "react-icons/md";
 import { RiReservedLine } from "react-icons/ri";
 import { GiTable, GiRoundTable } from "react-icons/gi";
+import NavBar from "./NavBar"
 
 function Sidebar() {
+
   return (
     <>
-      <aside id="sidebar" className="sidebar">
+    
+      {/* <aside id="sidebar" className="sidebar">
         <ul className="sidebar-nav" id="sidebar-nav">
           <li className="nav-item">
             <Link to="/home" className="nav-link ">
-              {/* <i className="bi bi-grid"></i> */}
+               <i className="bi bi-grid"></i> 
               <AiFillDashboard style={{fontSize: '1.5rem', marginRight: '0.5rem'}}/>
               <span>Dashboard</span>
             </Link>
           </li>
 
-
+         
           <li className="nav-item">
             <a
               className="nav-link collapsed"
@@ -115,8 +118,9 @@ function Sidebar() {
                 </Link>
               </li>
             </ul>
-          </li>
+          </li> */}
 
+{/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
 
           {/* <li className="nav-item">
             <a
@@ -379,8 +383,8 @@ function Sidebar() {
             
             </ul>
           </li> */}
-        </ul>
-      </aside>
+        {/* </ul>
+      </aside> */}
     </>
   );
 }

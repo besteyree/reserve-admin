@@ -1,18 +1,17 @@
-import Footer from "./Footer";
-import Header from "./Header";
+import Footer from "./CommonComponents/Footer";
+import Header from "./CommonComponents/Header";
 import React from "react";
-import Sidebar from "./Sidebar";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import { Link } from "react-router-dom";
+
 
 function MainContent() {
-  
   return (
     <>
-    <ToastContainer position="top-right"/>
+      <ToastContainer position="top-right" />
 
       <Header />
-      <Sidebar />
 
       <main id="main" className="main">
         <div className="pagetitle">
@@ -20,7 +19,7 @@ function MainContent() {
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <a href="index.html">Home</a>
+                <Link to="index.html">Home</Link>
               </li>
               <li className="breadcrumb-item active">Dashboard</li>
             </ol>
@@ -31,14 +30,10 @@ function MainContent() {
           <div className="row">
             <div className="col-lg-8">
               <div className="row">
-
-                {/* <div className="col-xxl-4 col-md-6">
+                <div className="col-xxl-4 col-md-6">
                   <div className="card info-card sales-card">
-                    
                     <div className="card-body">
-                      <h5 className="card-title">
-                        Vendors Registered
-                      </h5>
+                      <h5 className="card-title">Vendors Registered</h5>
 
                       <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -46,21 +41,16 @@ function MainContent() {
                         </div>
                         <div className="ps-3">
                           <h6>145</h6>
-                          
                         </div>
                       </div>
                     </div>
                   </div>
-                </div> */}
+                </div>
 
-                {/* <div className="col-xxl-4 col-md-6">
+                <div className="col-xxl-4 col-md-6">
                   <div className="card info-card revenue-card">
-                    
-
                     <div className="card-body">
-                      <h5 className="card-title">
-                        Total Customer 
-                      </h5>
+                      <h5 className="card-title">Total Customer</h5>
 
                       <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -68,21 +58,16 @@ function MainContent() {
                         </div>
                         <div className="ps-3">
                           <h6>200</h6>
-                          
                         </div>
                       </div>
                     </div>
                   </div>
-                </div> */}
+                </div>
 
-                {/* <div className="col-xxl-4 col-xl-12">
+                <div className="col-xxl-4 col-xl-12">
                   <div className="card info-card customers-card">
-                   
-
                     <div className="card-body">
-                      <h5 className="card-title">
-                        Total Restaurants 
-                      </h5>
+                      <h5 className="card-title">Total Restaurants</h5>
 
                       <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -90,32 +75,27 @@ function MainContent() {
                         </div>
                         <div className="ps-3">
                           <h6>1244</h6>
-                          
                         </div>
                       </div>
                     </div>
                   </div>
-                </div> */}
+                </div>
 
-                {/* <div className="col-12">
+                <div className="col-12">
                   <div className="card">
- 
                     <div className="card-body">
                       <h5 className="card-title">
                         Reports <span>/Today</span>
                       </h5>
 
-                      <div id="reportsChart"></div> */}
+                      <div id="reportsChart"></div>
                       {/* Scripts are called here for graph from public/index.html */}
-                      
-                    {/* </div>
+                    </div>
                   </div>
-                </div> */}
+                </div>
 
-                {/* <div className="col-12">
+                <div className="col-12">
                   <div className="card recent-sales overflow-auto">
-
-
                     <div className="card-body">
                       <h5 className="card-title">
                         Recent Sales <span>| Today</span>
@@ -134,13 +114,13 @@ function MainContent() {
                         <tbody>
                           <tr>
                             <th scope="row">
-                              <a href="#">#2457</a>
+                              <Link to="#">#2457</Link>
                             </th>
                             <td>Brandon Jacob</td>
                             <td>
-                              <a href="#" className="text-primary">
+                              <Link to="#" className="text-primary">
                                 At praesentium minu
-                              </a>
+                              </Link>
                             </td>
                             <td>$64</td>
                             <td>
@@ -149,30 +129,27 @@ function MainContent() {
                           </tr>
                           <tr>
                             <th scope="row">
-                              <a href="#">#2147</a>
+                              <Link to="#">#2147</Link>
                             </th>
                             <td>Bridie Kessler</td>
                             <td>
-                              <a href="#" className="text-primary">
+                              <Link to="#" className="text-primary">
                                 Blanditiis dolor omnis similique
-                              </a>
+                              </Link>
                             </td>
                             <td>$47</td>
                             <td>
                               <span className="badge bg-warning">Pending</span>
                             </td>
                           </tr>
-                          
                         </tbody>
                       </table>
                     </div>
                   </div>
-                </div> */}
-                
-                {/* <div className="col-12">
-                  <div className="card top-selling overflow-auto">
-                    
+                </div>
 
+                <div className="col-12">
+                  <div className="card top-selling overflow-auto">
                     <div className="card-body pb-0">
                       <h5 className="card-title">
                         Top Selling <span>| Today</span>
@@ -191,14 +168,14 @@ function MainContent() {
                         <tbody>
                           <tr>
                             <th scope="row">
-                              <a href="#">
+                              <Link to="#">
                                 <img src="assets/img/product-1.jpg" alt="" />
-                              </a>
+                              </Link>
                             </th>
                             <td>
-                              <a href="#" className="text-primary fw-bold">
+                              <Link to="#" className="text-primary fw-bold">
                                 Ut inventore ipsa voluptas nulla
-                              </a>
+                              </Link>
                             </td>
                             <td>$64</td>
                             <td className="fw-bold">124</td>
@@ -206,65 +183,58 @@ function MainContent() {
                           </tr>
                           <tr>
                             <th scope="row">
-                              <a href="#">
+                              <Link to="#">
                                 <img src="assets/img/product-2.jpg" alt="" />
-                              </a>
+                              </Link>
                             </th>
                             <td>
-                              <a href="#" className="text-primary fw-bold">
+                              <Link to="#" className="text-primary fw-bold">
                                 Exercitationem similique doloremque
-                              </a>
+                              </Link>
                             </td>
                             <td>$46</td>
                             <td className="fw-bold">98</td>
                             <td>$4,508</td>
                           </tr>
-                         
                         </tbody>
                       </table>
                     </div>
                   </div>
-                </div> */}
+                </div>
               </div>
             </div>
 
             <div className="col-lg-4">
-              
-             
-              {/* <div className="card">
+              <div className="card">
                 <div className="card-body pb-0">
                   <h5 className="card-title">
-                   SMS Avaiable vs Spent vs Daily Spent
+                    SMS Avaiable vs Spent vs Daily Spent
                   </h5>
 
                   <div
                     id="trafficChart"
                     style={{ minHeight: "400px" }}
                     className="echart"
-                  ></div> */}
+                  ></div>
                   {/* Pei Chart scripts are call here from public/index.html file */}
-                {/* </div>
-              </div> */}
+                </div>
+              </div>
 
-              {/* <div className="card">
+              <div className="card">
                 <div className="card-body pb-0">
                   <h5 className="card-title">
-                   Whatsapp Avaiable vs Spent vs Daily Spent
+                    Whatsapp Avaiable vs Spent vs Daily Spent
                   </h5>
 
                   <div
                     id="whatappChart"
                     style={{ minHeight: "400px" }}
                     className="echart"
-                  ></div> */}
+                  ></div>
 
-                
                   {/* Pei Chart scripts are call here from public/index.html file */}
-                {/* </div>
-              </div> */}
-
-              
-             
+                </div>
+              </div>
             </div>
           </div>
         </section>
