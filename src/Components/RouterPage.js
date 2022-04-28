@@ -26,6 +26,7 @@ import CheckBoth from "./CommonComponents/CheckBoth";
 import UpdateVendor from "./VendorComponents/UpdateVendor";
 import CreateSms from "./RestaurantComponents/CreateSms";
 import CreateReservation from "./ReservationComponents/CreateReservation";
+import ViewTable from "./TableComponents/ViewTable";
 
 function RouterPage() {
   return (
@@ -62,6 +63,10 @@ function RouterPage() {
 
           <Route exact path="/createreservation" element={<PrivateRoute />}>
             <Route path="/createreservation" element={<CreateReservation />} />
+          </Route>
+
+          <Route exact path="/viewtables/:id" element={<PrivateRoute />}>
+            <Route path="/viewtables/:id" element={<ViewTable />} />
           </Route>
 
           {/* -----------------------------End--------------------------------- */}

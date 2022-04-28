@@ -23,16 +23,14 @@ const ListFloors = () => {
   const fetchDetails = async (id) => {
     let res = 0;
     if (id) {
-      res = await axios.get(`/floor/${id}`).catch((err) => {
+      res = await axios.get(`/get_floor/${id}`).catch((err) => {
         console.log("Err", err);
       });
     } else {
-      res = await axios.get(`/floor`).catch((err) => {
+      res = await axios.get(`/get_floor`).catch((err) => {
         console.log("Err", err);
       });
     }
-
-    // console.log(res.data)
 
     dispatch(getRestaurantsDetails(res.data));
   };
@@ -50,7 +48,7 @@ const ListFloors = () => {
     fetchDetails(id);
   }, []);
 
-  const renderList = restdetails.map((restdetails) => {
+  const renderList = restdetails?.data?.map((restdetails) => {
     const { id, title, status } = restdetails;
     return (
       <tr key={id}>
@@ -136,5 +134,7 @@ const ListFloors = () => {
     </>
   );
 };
+
+
 
 export default ListFloors;

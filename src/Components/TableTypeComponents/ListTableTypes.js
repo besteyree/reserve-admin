@@ -23,11 +23,11 @@ const ListTableTypes = () => {
   const fetchTableDetails = async (id) => {
     let res = 0;
     if(id){
-      res = await axios.get(`/table_type/${id}`).catch((err) => {
+      res = await axios.get(`/get_table_type/${id}`).catch((err) => {
         console.log("Err", err);
       });
     } else {
-      res = await axios.get(`/table_type`).catch((err) => {
+      res = await axios.get(`/get_table_type`).catch((err) => {
         console.log("Err", err);
       });
     }
@@ -48,7 +48,7 @@ const ListTableTypes = () => {
     fetchTableDetails(id);
   }, []);
 
-  const renderList = listTableDetail.map((listTableDetail) => {
+  const renderList = listTableDetail?.data?.map((listTableDetail) => {
     const { id, title, status } = listTableDetail;
     return (
       <tr key={id}>

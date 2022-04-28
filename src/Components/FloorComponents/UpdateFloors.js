@@ -17,7 +17,7 @@ const UpdateFloors = () => {
   const navigate = useNavigate();
 
   const get = () => {
-    axios.get(`/get_floor/${id}`).then((res) => {
+    axios.get(`/get_floor_form/${id}`).then((res) => {
       setTitle(res.data.title);
 
       setStatus(res.data.status);

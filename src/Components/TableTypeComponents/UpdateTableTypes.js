@@ -26,7 +26,7 @@ const UpdateTableTypes = () => {
   const navigate = useNavigate();
 
   const get = () => {
-    axios.get(`/get_table_type/${id}`).then((res) => {
+    axios.get(`/get_table_type_form/${id}`).then((res) => {
       setTitle(res.data.title);
 
       setDetail(res.data.detail);

@@ -18,18 +18,18 @@ const ListTables = () => {
 
   const fetchTableDetails = async (pageNumber = 1) => {
     const res = await axios
-      .get(`/get_table?page=${pageNumber}`)
+      .get(`/group_table?page=${pageNumber}`)
       .catch((err) => {
         console.log("Err", err);
       });
+
+      // console.log(res.data)
     dispatch(getlistTable(res.data));
   };
 
   useEffect(() => {
     fetchTableDetails();
   }, []);
-
-      console.log(TableDetail);
 
 
   const PageClick = () => {
@@ -57,13 +57,17 @@ const ListTables = () => {
   };
 
   const renderList = TableDetail?.data?.map((TableDetail) => {
-    const { id, title, no_of_occupany, status } = TableDetail;
+    const { AllId, value, no_of_occupany } = TableDetail;
     return (
-      <tr key={id}>
-        <td>{id}</td>
-        <td>{title}</td>
+      <tr key={AllId}>
+        <td>{AllId}</td>
+        <td>{value}</td>
         <td>{no_of_occupany}</td>
-        <td>{status}</td>
+        <td>
+          <Link to={`/viewtables/${AllId}`} className="btn btn-primary">
+            View Tables
+          </Link>
+        </td>
       </tr>
     );
   });
@@ -99,7 +103,7 @@ const ListTables = () => {
                         <th scope="col">Id</th>
                         <th scope="col">Table Name</th>
                         <th scope="col">No. of Ocuupancy</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">View tables</th>
                       </tr>
                     </thead>
                     <tbody>{renderList}</tbody>
