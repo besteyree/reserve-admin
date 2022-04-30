@@ -10,6 +10,10 @@ import { getlistTableTypes } from "../../redux/actions/restaurantAction";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 
+import { FiEdit2 } from "react-icons/fi";
+import { AiFillDelete } from "react-icons/ai";
+import { MdOutlineCreateNewFolder } from "react-icons/md";
+
 const ListTableTypes = () => {
   const listTableDetail = useSelector(
     (state) => state.restaurantReducer.listtabletype
@@ -35,13 +39,19 @@ const ListTableTypes = () => {
     dispatch(getlistTableTypes(res.data));
   };
 
-  const tabletypedelete = async (id) => {
+  const tabletypedelete = async (e, id) => {
+    e.preventDefault();
+
+    const thisClick = e.currentTarget;
+    thisClick.innerText = "Deleting";
+
     const res = await axios.get(`/table-types_delete/${id}`).catch((err) => {
       console.log("Err", err);
     });
 
-    window.location.reload(false);
-    return toast.warning(res.data.message, { type: "danger", delay: "3000" });
+    thisClick.closest("tr").remove();
+    // window.location.reload(false);
+    return toast.warning(res.data.message, { type: "warning"});
   };
 
   useEffect(() => {
@@ -52,18 +62,29 @@ const ListTableTypes = () => {
     const { id, title, status } = listTableDetail;
     return (
       <tr key={id}>
-        <td>{id}</td>
         <td>{title}</td>
         <td>{status}</td>
 
         <td>
-          <Link to={`/updatetabletypes/${id}`} className="btn btn-success">
-            Edit
+          <Link to={`/updatetabletypes/${id}`}>
+          <FiEdit2
+              style={{
+                fontSize: "1.5rem",
+                marginRight: "0.5rem",
+                color: "green",
+              }}
+            />
           </Link>
         </td>
         <td>
-          <div onClick={() => tabletypedelete(id)} className="btn btn-danger">
-            Delete{" "}
+          <div onClick={(e) => tabletypedelete(e, id)}>
+          <AiFillDelete
+              style={{
+                fontSize: "1.5rem",
+                marginRight: "0.5rem",
+                color: "red",
+              }}
+            />
           </div>
         </td>
       </tr>
@@ -89,11 +110,13 @@ const ListTableTypes = () => {
             </ol>
           </nav>
 
+          <Link to={`/createtabletype/${id}`}>
           <button type="submit" className="btn btn-primary">
-            <Link to={`/createtabletype/${id}`} style={{ color: "white" }}>
+           
               Create Table Type
-            </Link>
           </button>
+          </Link>
+
         </div>
 
         <section className="section">
@@ -104,7 +127,7 @@ const ListTableTypes = () => {
                   <table className="table datatable">
                     <thead>
                       <tr>
-                        <th scope="col">Id</th>
+                        
                         <th scope="col">Table Type Name</th>
                         <th scope="col">Status</th>
                         <th scope="col">Edit</th>

@@ -2,14 +2,14 @@ import React, { Component, useEffect } from "react";
 import Footer from "../CommonComponents/Footer";
 import Header from "../CommonComponents/Header";
 import { Link, useParams } from "react-router-dom";
-
 import axios from "axios";
-
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-
 import { useDispatch, useSelector } from "react-redux";
 import { getRestaurantsDetails } from "../../redux/actions/restaurantAction";
+import { FiEdit2 } from "react-icons/fi";
+import { AiFillDelete } from "react-icons/ai";
+import { MdOutlineCreateNewFolder } from "react-icons/md";
 
 const ListFloors = () => {
   const restdetails = useSelector(
@@ -35,13 +35,22 @@ const ListFloors = () => {
     dispatch(getRestaurantsDetails(res.data));
   };
 
-  const floordelete = async (id) => {
-    const res = await axios.get(`/floor_delete/${id}`).catch((err) => {
-      console.log("Err", err);
-    });
+  const floordelete = async (e, id) => {
+    e.preventDefault();
 
-    window.location.reload(false);
-    return toast.warning(res.data.message, { type: "warning" });
+    const thisClick = e.currentTarget;
+
+    const res = await axios
+      .get(`/floor_delete/${id}`)
+      .then((res) => {
+        thisClick.closest("tr").remove();
+        return toast.warning(res.data.message, { type: "warning" });
+      })
+      .catch((err) => {
+        console.log("Err", err);
+      });
+
+    // window.location.reload(false);
   };
 
   useEffect(() => {
@@ -52,19 +61,31 @@ const ListFloors = () => {
     const { id, title, status } = restdetails;
     return (
       <tr key={id}>
-        <td>{id}</td>
+       
         <td>{title}</td>
         <td>{status}</td>
 
         <td>
-          <Link to={`/updatefloors/${id}`} className="btn btn-success">
-            Edit
+          <Link to={`/updatefloors/${id}`}>
+            <FiEdit2
+              style={{
+                fontSize: "1.5rem",
+                marginRight: "0.5rem",
+                color: "green",
+              }}
+            />
           </Link>
         </td>
         <td>
-          <div onClick={() => floordelete(id)} className="btn btn-danger">
-            Delete{" "}
-          </div>
+          <Link to="" onClick={(e) => floordelete(e, id)}>
+            <AiFillDelete
+              style={{
+                fontSize: "1.5rem",
+                marginRight: "0.5rem",
+                color: "red",
+              }}
+            />
+          </Link>
         </td>
       </tr>
     );
@@ -89,14 +110,11 @@ const ListFloors = () => {
             </ol>
           </nav>
 
-          <button type="submit" className="btn btn-primary">
-            <Link
-              to={`/createrestaurantfloor/${id}`}
-              style={{ color: "white" }}
-            >
+          <Link to={`/createrestaurantfloor/${id}`}>
+            <button type="submit" className="btn btn-primary">
               Create Floor
-            </Link>
-          </button>
+            </button>
+          </Link>
         </div>
 
         <section className="section">
@@ -107,7 +125,7 @@ const ListFloors = () => {
                   <table className="table datatable">
                     <thead>
                       <tr>
-                        <th scope="col">Id</th>
+                        
                         <th scope="col">Floor Name</th>
                         <th scope="col">Status</th>
                         <th scope="col">Edit</th>
@@ -134,7 +152,5 @@ const ListFloors = () => {
     </>
   );
 };
-
-
 
 export default ListFloors;

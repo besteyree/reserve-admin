@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../CommonComponents/Footer";
 import Header from "../CommonComponents/Header";
 import { Link } from "react-router-dom";
@@ -10,27 +10,30 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 
 import Pagination from "react-js-pagination";
+import TwoSeat from "../TableSeatComponent.js/TwoSeat";
+import FourSeat from "../TableSeatComponent.js/FourSeat";
+import SixSeat from "../TableSeatComponent.js/SixSeat";
+import EigthSeat from "../TableSeatComponent.js/EigthSeat";
 
 const ListTables = () => {
   const TableDetail = useSelector((state) => state.restaurantReducer.listtable);
+
+  const [check_occupany, setCheckOccupany] = useState("");
 
   const dispatch = useDispatch();
 
   const fetchTableDetails = async (pageNumber = 1) => {
     const res = await axios
-      .get(`/group_table?page=${pageNumber}`)
+      .get(`/group_table`)
       .catch((err) => {
         console.log("Err", err);
       });
-
-      // console.log(res.data)
     dispatch(getlistTable(res.data));
   };
 
   useEffect(() => {
     fetchTableDetails();
   }, []);
-
 
   const PageClick = () => {
     const { current_page, per_page, total, to } = TableDetail;
@@ -56,19 +59,26 @@ const ListTables = () => {
     fetchTableDetails(data);
   };
 
-  const renderList = TableDetail?.data?.map((TableDetail) => {
-    const { AllId, value, no_of_occupany } = TableDetail;
+  console.log(TableDetail.data);
+
+  const renderList = TableDetail.map((TableDetail) => {
+    const { AllId, no_of_occupany } = TableDetail;
+    console.log(TableDetail)
     return (
-      <tr key={AllId}>
-        <td>{AllId}</td>
-        <td>{value}</td>
-        <td>{no_of_occupany}</td>
-        <td>
-          <Link to={`/viewtables/${AllId}`} className="btn btn-primary">
-            View Tables
-          </Link>
-        </td>
-      </tr>
+      <div key={AllId}>
+        
+        {no_of_occupany == 2 ? (
+          <TwoSeat data={TableDetail} />
+        ) : no_of_occupany == 4 ? (
+          <FourSeat data={TableDetail} />
+        ) : no_of_occupany == 6 ? (
+          <SixSeat data={TableDetail} />
+        ) : no_of_occupany == 8 ? (
+          <EigthSeat data={TableDetail} />
+        ) : (
+          <h1>No Data Found</h1>
+        )}
+      </div>
     );
   });
 
@@ -96,20 +106,8 @@ const ListTables = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="card">
-                <div className="card-body">
-                  <table className="table datatable">
-                    <thead>
-                      <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Table Name</th>
-                        <th scope="col">No. of Ocuupancy</th>
-                        <th scope="col">View tables</th>
-                      </tr>
-                    </thead>
-                    <tbody>{renderList}</tbody>
-                  </table>
-                  {PageClick()}
-                </div>
+                <div className="card-body">{renderList}</div>
+                {/* {PageClick()} */}
               </div>
             </div>
           </div>

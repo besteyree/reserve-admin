@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import Footer from "../CommonComponents/Footer";
 import Header from "../CommonComponents/Header";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 
+
+
 const CreateFloors = () => {
   const [title, setTitle] = useState("");
   const [status, setStatus] = useState("0");
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     let isChecked = e.target.checked;
@@ -27,6 +31,10 @@ const CreateFloors = () => {
   const submitFloor = async (e) => {
     e.preventDefault();
 
+    if(title == ""){
+      toast.warning("Fill the appropriate details", { type: "warning" });
+    }
+
     const data = {
       title,
       status,
@@ -36,11 +44,9 @@ const CreateFloors = () => {
       console.log("Err", err);
     });
 
-    console.log(res.data);
-
     setTitle("");
     document.getElementById("gridCheck1").checked = false;
-
+    navigate('/floordetails');
     return toast.success(res.data.message, { type: "success" });
   };
 
@@ -121,7 +127,7 @@ const CreateFloors = () => {
                           className="btn btn-primary"
                           onClick={(e) => submitFloor(e)}
                         >
-                          Create Floor
+                          Create Floor 
                         </button>
                       </div>
                     </div>

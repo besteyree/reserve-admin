@@ -33,10 +33,11 @@ function Header() {
       .then((res) => {
         localStorage.removeItem("auth-token");
         localStorage.removeItem("user-email");
+        localStorage.removeItem("user-type");
+        localStorage.removeItem("persist:root");
 
         dispatch(logout(res.data));
         navigate("/");
-        return toast(res.data.message, { type: "success" });
       })
       .catch((err) => {
         console.log("Err", err);
@@ -104,11 +105,11 @@ function Header() {
                           className="nav-content collapse "
                           data-bs-parent="#sidebar-nav"
                         >
+                          <Link to="/createvendor/null">
                           <li>
-                            <Link to="/createvendor/null">
                               <span>Create Vendors</span>
-                            </Link>
                           </li>
+                          </Link>
                           <li>
                             <Link to="/listvendor">
                               <span>List Vendors</span>
@@ -177,7 +178,7 @@ function Header() {
                             }}
                           />
 
-                          <span>Floors</span>
+                          <span>Floors  </span>
                           <i className="bi bi-chevron-down ms-auto"></i>
                         </a>
                         <ul
@@ -185,11 +186,13 @@ function Header() {
                           className="nav-content collapse "
                           data-bs-parent="#sidebar-nav"
                         >
+                          <Link to={`/createrestaurantfloor/${id}`}>
                           <li>
-                            <Link to={`/createrestaurantfloor/${id}`}>
+                            
                               <span>Create Floors</span>
-                            </Link>
                           </li>
+                          </Link>
+
                           <li>
                             <Link to="/floordetails">
                               <span>List Floors</span>

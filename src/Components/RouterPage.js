@@ -27,12 +27,20 @@ import UpdateVendor from "./VendorComponents/UpdateVendor";
 import CreateSms from "./RestaurantComponents/CreateSms";
 import CreateReservation from "./ReservationComponents/CreateReservation";
 import ViewTable from "./TableComponents/ViewTable";
+import FourSeat from "./TableSeatComponent.js/FourSeat";
+import TwoSeat from "./TableSeatComponent.js/TwoSeat";
+import EigthSeat from "./TableSeatComponent.js/EigthSeat";
+import SixSeat from "./TableSeatComponent.js/SixSeat";
 
 function RouterPage() {
   return (
     <div>
       <Router>
         <Routes>
+
+        <Route path="/eightseat" element={<SixSeat />} />
+
+
           {/* Checking Login route for both super admin admin */}
           <Route exact path="/" element={<CheckLoginRoute />}>
             <Route path="/" element={<Login />} />
@@ -67,6 +75,14 @@ function RouterPage() {
 
           <Route exact path="/viewtables/:id" element={<PrivateRoute />}>
             <Route path="/viewtables/:id" element={<ViewTable />} />
+          </Route>
+
+          <Route exact path="/fourseat" element={<PrivateRoute />}>
+            <Route path="/fourseat" element={<FourSeat />} />
+          </Route>
+
+          <Route exact path="/twoseat" element={<PrivateRoute />}>
+            <Route path="/twoseat" element={<TwoSeat />} />
           </Route>
 
           {/* -----------------------------End--------------------------------- */}

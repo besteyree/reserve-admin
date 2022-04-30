@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import Footer from "../CommonComponents/Footer";
 import Header from "../CommonComponents/Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,8 @@ import {
   getRestaurantsDetails,
   getlistTableTypes,
 } from "../../redux/actions/restaurantAction";
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
 
 const CreateTables = () => {
   const restdetails = useSelector(
@@ -29,6 +31,8 @@ const CreateTables = () => {
   const [title, setTitle] = useState("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     axios.get(`/get_floor`).then((res) => {
@@ -42,6 +46,10 @@ const CreateTables = () => {
 
   const submitTables = async (e) => {
     e.preventDefault();
+
+    if(title == "" && no_of_occupany == ""){
+      toast.warning("Fill the appropriate details", { type: "warning" });
+    }
     const data = {
       title,
       no_of_occupany,
@@ -52,10 +60,14 @@ const CreateTables = () => {
     const res = await axios.post(`/tablegenerrate`, data).catch((err) => {
       console.log("Err", err);
     });
+
+    navigate('/listtable')
   };
 
   return (
     <>
+      <ToastContainer position="top-right" />
+
       <Header />
 
       <main id="main" className="main">

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Footer from "../CommonComponents/Footer";
 import Header from "../CommonComponents/Header";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
@@ -12,6 +12,9 @@ const CreateTableTypes = () => {
   const [title, setTitle] = useState("");
   const [detail, setDetail] = useState("");
   const [status, setStatus] = useState("0");
+
+  const navigate = useNavigate();
+
 
   const handleChange = (e) => {
     setStatus("1");
@@ -29,6 +32,12 @@ const CreateTableTypes = () => {
   const submitTableType = async (e) => {
     e.preventDefault();
 
+    if(title == ""){
+      toast.warning("Fill the appropriate details", { type: "warning" });
+    } else if(detail == ""){
+      toast.warning("Fill the appropriate details", { type: "warning" });
+    }
+
     const data = {
       title,
       detail,
@@ -45,7 +54,7 @@ const CreateTableTypes = () => {
     setDetail("");
     document.getElementById("gridCheck1").checked = false;
 
-    return toast.success(res.data.message, { type: "success" });
+    return toast.success(res.data.message, { type: "success" }), navigate('/tabletypes');
   };
 
   return (

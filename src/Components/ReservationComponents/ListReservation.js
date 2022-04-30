@@ -49,7 +49,7 @@ function ListReservation() {
       reservation;
     return (
       <tr key={id}>
-        <th scope="row">{id}</th>
+       
         <td>{name}</td>
         <td>{phone}</td>
         <td>{email}</td>
@@ -104,17 +104,19 @@ function ListReservation() {
               <li className="breadcrumb-item active">Reservation List</li>
             </ol>
           </nav>
+          <Link to="/createreservation">
           <button type="submit" className="btn btn-primary">
-            <Link to="/createreservation" style={{ color: "white" }}>
+           
               Create Reservation
-            </Link>
           </button>
+          </Link>
+
 
           <div className="row mb-3">
             <label className="col-sm-2 col-form-label">
               <b>Sort by Wakin / Reservation</b>
             </label>
-            <div className="col-sm-10">
+            <div className="col-sm-2">
               <select
                 className="form-select"
                 aria-label="Default select example"
@@ -140,7 +142,7 @@ function ListReservation() {
                   <table className="table datatable">
                     <thead>
                       <tr>
-                        <th scope="col">Id</th>
+                       
                         <th scope="col">Name</th>
                         <th scope="col">Phone</th>
                         <th scope="col">Email</th>

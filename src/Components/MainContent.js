@@ -1,12 +1,49 @@
 import Footer from "./CommonComponents/Footer";
 import Header from "./CommonComponents/Header";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
+import { format } from "date-fns";
 
 function MainContent() {
+  const [startDate, setStartDate] = useState(new Date());
+
+  const [reservation, setReservation] = useState();
+  const [reservation_seated, setReservationSeated] = useState();
+  const [is_walkin, setIsWalkin] = useState();
+  const [reservation_repeated, setReservationRepeated] = useState();
+  const [total_seated, setTotalSeated] = useState();
+
+  useEffect(() => {
+    restaurantstatistics();
+  }, [startDate]);
+
+  const restaurantstatistics = async () => {
+    const d = format(startDate, "Y-MM-d");
+
+    const data = {
+      d: d,
+    };
+
+    const res = await axios
+      .post(`/restaurant_statistics`, data)
+      .catch((err) => {
+        console.log("Err", err);
+      });
+
+    console.log(res.data);
+
+    setReservation(res.data.reservation);
+    setReservationSeated(res.data.reservation_seated);
+    setIsWalkin(res.data.is_walkin);
+    setReservationRepeated(res.data.reservation_repeated);
+    setTotalSeated(res.data.total_seated);
+  };
+
   return (
     <>
       <ToastContainer position="top-right" />
@@ -15,13 +52,31 @@ function MainContent() {
 
       <main id="main" className="main">
         <div className="pagetitle">
-          <h1>Dashboard</h1>
+          <h1>Dashboard </h1>
+
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
                 <Link to="index.html">Home</Link>
               </li>
               <li className="breadcrumb-item active">Dashboard</li>
+              <style>
+                {`.date-picker input {
+              float: right;
+
+            }`}
+              </style>
+              <DatePicker
+                dateFormat="yyyy-MM-dd"
+                wrapperClassName="date-picker"
+                // showTimeSelect
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+                popperPlacement="top-end"
+                value={startDate}
+                name="datepick"
+                // timeClassName={handleColor}
+              />
             </ol>
           </nav>
         </div>
@@ -33,14 +88,14 @@ function MainContent() {
                 <div className="col-xxl-4 col-md-6">
                   <div className="card info-card sales-card">
                     <div className="card-body">
-                      <h5 className="card-title">Vendors Registered</h5>
+                      <h5 className="card-title">Reservation</h5>
 
                       <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                           <i className="bi bi-shop"></i>
                         </div>
                         <div className="ps-3">
-                          <h6>145</h6>
+                          <h6>{reservation}</h6>
                         </div>
                       </div>
                     </div>
@@ -50,14 +105,14 @@ function MainContent() {
                 <div className="col-xxl-4 col-md-6">
                   <div className="card info-card revenue-card">
                     <div className="card-body">
-                      <h5 className="card-title">Total Customer</h5>
+                      <h5 className="card-title">Reservation Seated</h5>
 
                       <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                           <i className="bi bi-people-fill"></i>
                         </div>
                         <div className="ps-3">
-                          <h6>200</h6>
+                          <h6>{reservation_seated}</h6>
                         </div>
                       </div>
                     </div>
@@ -67,21 +122,55 @@ function MainContent() {
                 <div className="col-xxl-4 col-xl-12">
                   <div className="card info-card customers-card">
                     <div className="card-body">
-                      <h5 className="card-title">Total Restaurants</h5>
+                      <h5 className="card-title">Is Walkin</h5>
 
                       <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                           <i className="bi bi-shop"></i>
                         </div>
                         <div className="ps-3">
-                          <h6>1244</h6>
+                          <h6>{is_walkin}</h6>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="col-12">
+                <div className="col-xxl-4 col-xl-12">
+                  <div className="card info-card customers-card">
+                    <div className="card-body">
+                      <h5 className="card-title">Total Seated</h5>
+
+                      <div className="d-flex align-items-center">
+                        <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <i className="bi bi-shop"></i>
+                        </div>
+                        <div className="ps-3">
+                          <h6>{total_seated}</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-xxl-4 col-xl-12">
+                  <div className="card info-card customers-card">
+                    <div className="card-body">
+                      <h5 className="card-title">Reservation Repeated</h5>
+
+                      <div className="d-flex align-items-center">
+                        <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <i className="bi bi-shop"></i>
+                        </div>
+                        <div className="ps-3">
+                          <h6>{reservation_repeated}</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* <div className="col-12">
                   <div className="card">
                     <div className="card-body">
                       <h5 className="card-title">
@@ -89,12 +178,12 @@ function MainContent() {
                       </h5>
 
                       <div id="reportsChart"></div>
-                      {/* Scripts are called here for graph from public/index.html */}
+                      Scripts are called here for graph from public/index.html
                     </div>
                   </div>
-                </div>
+                </div> */}
 
-                <div className="col-12">
+                {/* <div className="col-12">
                   <div className="card recent-sales overflow-auto">
                     <div className="card-body">
                       <h5 className="card-title">
@@ -146,9 +235,9 @@ function MainContent() {
                       </table>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
-                <div className="col-12">
+                {/* <div className="col-12">
                   <div className="card top-selling overflow-auto">
                     <div className="card-body pb-0">
                       <h5 className="card-title">
@@ -202,9 +291,9 @@ function MainContent() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            <div className="col-lg-4">
+                {/* <div className="col-lg-4">
               <div className="card">
                 <div className="card-body pb-0">
                   <h5 className="card-title">
@@ -216,11 +305,11 @@ function MainContent() {
                     style={{ minHeight: "400px" }}
                     className="echart"
                   ></div>
-                  {/* Pei Chart scripts are call here from public/index.html file */}
+                  Pei Chart scripts are call here from public/index.html file
                 </div>
-              </div>
+              </div> */}
 
-              <div className="card">
+                {/* <div className="card">
                 <div className="card-body pb-0">
                   <h5 className="card-title">
                     Whatsapp Avaiable vs Spent vs Daily Spent
@@ -232,8 +321,9 @@ function MainContent() {
                     className="echart"
                   ></div>
 
-                  {/* Pei Chart scripts are call here from public/index.html file */}
+                  Pei Chart scripts are call here from public/index.html file
                 </div>
+              </div> */}
               </div>
             </div>
           </div>

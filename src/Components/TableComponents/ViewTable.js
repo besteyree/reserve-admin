@@ -11,6 +11,11 @@ import { ToastContainer } from "react-toastify";
 
 import Pagination from "react-js-pagination";
 
+import TwoSeat from "../TableSeatComponent.js/TwoSeat";
+import FourSeat from "../TableSeatComponent.js/FourSeat";
+import SixSeat from "../TableSeatComponent.js/SixSeat";
+import EigthSeat from "../TableSeatComponent.js/EigthSeat";
+
 function ViewTable() {
 
   let { id } = useParams();
@@ -22,7 +27,7 @@ function ViewTable() {
   
     const fetchTableDetails = async (pageNumber = 1) => {
       const res = await axios
-        .get(`/get_table/${id}?page=${pageNumber}`)
+        .get(`/get_table/${id}`)
         .catch((err) => {
           console.log("Err", err);
         });
@@ -59,16 +64,27 @@ function ViewTable() {
     const handlePageClick = (data) => {
       fetchTableDetails(data);
     };
+
   
-    const renderList = TableDetail?.data?.map((TableDetail) => {
-      const { id, title, no_of_occupany, status } = TableDetail;
+    const renderList = TableDetail.map((TableDetail) => {
+      const { AllId, title, no_of_occupany, status } = TableDetail;
+
+    
       return (
-        <tr key={id}>
-          <td>{id}</td>
-          <td>{title}</td>
-          <td>{no_of_occupany}</td>
-          <td>{status}</td>
-        </tr>
+        <div key={AllId}>
+        
+        {no_of_occupany == 2 ? (
+          <TwoSeat data={TableDetail} />
+        ) : no_of_occupany == 4 ? (
+          <FourSeat data={TableDetail} />
+        ) : no_of_occupany == 6 ? (
+          <SixSeat data={TableDetail} />
+        ) : no_of_occupany == 8 ? (
+          <EigthSeat data={TableDetail} />
+        ) : (
+          <h1>No Data Found</h1>
+        )}
+      </div>
       );
     });
   
@@ -97,19 +113,10 @@ function ViewTable() {
               <div className="col-lg-12">
                 <div className="card">
                   <div className="card-body">
-                    <table className="table datatable">
-                      <thead>
-                        <tr>
-                          <th scope="col">Id</th>
-                          <th scope="col">Table Name</th>
-                          <th scope="col">No. of Ocuupancy</th>
-                          <th scope="col">Status</th>
-                        </tr>
-                      </thead>
-                      <tbody>{renderList}</tbody>
-                    </table>
-                    {PageClick()}
+                    {renderList}
+                    
                   </div>
+                  {/* {PageClick()} */}
                 </div>
               </div>
             </div>
