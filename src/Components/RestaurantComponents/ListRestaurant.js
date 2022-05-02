@@ -8,6 +8,12 @@ import axios from "axios";
 import { setRestaurants } from "../../redux/actions/restaurantAction";
 import Pagination from "react-js-pagination";
 
+import { FiEdit2 } from "react-icons/fi";
+import { MdOutlineSms } from "react-icons/md";
+import { FaSms } from "react-icons/fa";
+import { CgDetailsMore } from "react-icons/cg";
+
+
 function ListRestaurant() {
   const restaurants = useSelector(
     (state) => state.restaurantReducer.restaurants
@@ -68,33 +74,54 @@ function ListRestaurant() {
     const { id, title, phone, opening_time, closing_time } = restaurants;
     return (
       <tr key={id}>
-        <th scope="row">{id}</th>
+       
         <td>{title}</td>
         <td>{phone}</td>
         <td>{opening_time}</td>
         <td>{closing_time}</td>
         <td>
           {restaurants?.sms.sms == 0 ? (
-            <div onClick={() => createSms(id)} className="btn btn-primary">
-              Create SMS
+            <div onClick={() => createSms(id)}>
+              <MdOutlineSms
+              style={{
+                fontSize: "1.5rem",
+                marginRight: "0.5rem",
+                color: "green",
+              }}
+            />
             </div>
           ) : (
-            <div onClick={() => smsFetch(id)} className="btn btn-primary">
-              SMS
+            <div onClick={() => smsFetch(id)}>
+              <FaSms
+              style={{
+                fontSize: "1.5rem",
+                marginRight: "0.5rem",
+                color: "green",
+              }}/>
             </div>
           )}
         </td>
         <td>
           <div
             onClick={() => fetchSingleRestaurantDetail(id)}
-            className="btn btn-primary"
           >
-            Details
+            <CgDetailsMore
+              style={{
+                fontSize: "1.5rem",
+                marginRight: "0.5rem",
+                color: "green",
+              }}/>
           </div>
         </td>
         <td>
-          <Link to={`/updaterestaurant/${id}`} className="btn btn-success">
-            Edit
+          <Link to={`/updaterestaurant/${id}`}>
+          <FiEdit2
+              style={{
+                fontSize: "1.5rem",
+                marginRight: "0.5rem",
+                color: "green",
+              }}
+            />
           </Link>
         </td>
       </tr>
@@ -127,7 +154,7 @@ function ListRestaurant() {
                   <table className="table datatable">
                     <thead>
                       <tr>
-                        <th scope="col">Id</th>
+                      
                         <th scope="col">Title</th>
                         <th scope="col">Phone</th>
                         <th scope="col">Opening Time</th>

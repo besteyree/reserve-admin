@@ -33,7 +33,6 @@ const CreateTables = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
   useEffect(() => {
     axios.get(`/get_floor`).then((res) => {
       dispatch(getRestaurantsDetails(res.data));
@@ -47,9 +46,19 @@ const CreateTables = () => {
   const submitTables = async (e) => {
     e.preventDefault();
 
-    if(title == "" && no_of_occupany == ""){
-      toast.warning("Fill the appropriate details", { type: "warning" });
+    if (title == "") {
+      return toast.warning("Fill the appropriate details", { type: "warning" });
+    } else if (no_of_occupany == "") {
+      return toast.warning("Fill the appropriate details", { type: "warning" });
+    } else if (floor_id == "") {
+      return toast.warning("Fill the appropriate details", { type: "warning" });
+    } else if (type_id == "") {
+      return toast.warning("Fill the appropriate details", { type: "warning" });
+    } else if (no_of_table == "") {
+      return toast.warning("Fill the appropriate details", { type: "warning" });
+    } else {
     }
+
     const data = {
       title,
       no_of_occupany,
@@ -61,7 +70,10 @@ const CreateTables = () => {
       console.log("Err", err);
     });
 
-    navigate('/listtable')
+   
+    navigate("/listtable");
+    return toast.success(res.data.message, { type: "success" });
+    
   };
 
   return (
@@ -154,6 +166,7 @@ const CreateTables = () => {
                           name="no_of_table"
                           onChange={(e) => setNoOfTables(e.target.value)}
                           value={no_of_table}
+                          placeholder="Total No. of Tables"
                         />
                       </div>
                     </div>
@@ -191,6 +204,7 @@ const CreateTables = () => {
                           name="no_of_occupany"
                           onChange={(e) => setNoOfOccupany(e.target.value)}
                           value={no_of_occupany}
+                          placeholder="No. of Seats"
                         />
                       </div>
                     </div>

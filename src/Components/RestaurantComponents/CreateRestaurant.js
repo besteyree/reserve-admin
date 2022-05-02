@@ -47,6 +47,23 @@ function CreateRestaurant() {
   const submitRestaurant = async (e) => {
     e.preventDefault();
 
+    if (title == "") {
+      return toast.warn("Please Fill Appropriate Data", { type: "warning" });
+    } else if (phone == "") {
+      return toast.warn("Please Fill Appropriate Data", { type: "warning" });
+    } else if (opening_time == "") {
+      return toast.warn("Please Fill Appropriate Data", { type: "warning" });
+    } else if (closing_time == "") {
+      return toast.warn("Please Fill Appropriate Data", { type: "warning" });
+    } else if (max_table_occupancy == "") {
+      return toast.warn("Please Fill Appropriate Data", { type: "warning" });
+    } else if (user_id == "") {
+      return toast.warn("Please Fill Appropriate Data", { type: "warning" });
+    } else if (status == "") {
+      return toast.warn("Please Fill Appropriate Data", { type: "warning" });
+    } else {
+    }
+
     const data = {
       title,
       phone,
@@ -63,10 +80,10 @@ function CreateRestaurant() {
       .catch((err) => {
         console.log("Err", err);
       });
+    console.log(res.data.message);
 
     clear();
-
-    return toast.success(res.data.message, { type: "success" });
+    return toast.success("Restaurant Created..", { type: "success" });
   };
 
   return (
@@ -94,8 +111,6 @@ function CreateRestaurant() {
             <div className="col-lg-12">
               <div className="card">
                 <div className="card-body">
-                
-
                   <form id="RESTAURANT_FORM" encType="multipart/form-data">
                     <div className="row mb-3">
                       <label
@@ -111,6 +126,7 @@ function CreateRestaurant() {
                           name="title"
                           onChange={(e) => setTitle(e.target.value)}
                           value={title}
+                          placeholder="Enter the Restaurant Name"
                         />
                       </div>
                     </div>
@@ -129,6 +145,7 @@ function CreateRestaurant() {
                           name="phone"
                           onChange={(e) => setPhone(e.target.value)}
                           value={phone}
+                          placeholder="Enter the Phone Number"
                         />
                       </div>
                     </div>
@@ -142,7 +159,7 @@ function CreateRestaurant() {
                       </label>
                       <div className="col-sm-10">
                         <input
-                          type="text"
+                          type="datetime-local"
                           className="form-control"
                           name="opening_time"
                           onChange={(e) => setOpeningTime(e.target.value)}
@@ -160,7 +177,7 @@ function CreateRestaurant() {
                       </label>
                       <div className="col-sm-10">
                         <input
-                          type="text"
+                          type="datetime-local"
                           className="form-control"
                           name="closing_time"
                           onChange={(e) => setClosingTime(e.target.value)}
@@ -183,6 +200,7 @@ function CreateRestaurant() {
                           name="max_table_occupancy"
                           onChange={(e) => setMaxTable(e.target.value)}
                           value={max_table_occupancy}
+                          placeholder="Enter the Max Occupancy of Table"
                         />
                       </div>
                     </div>

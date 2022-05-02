@@ -32,7 +32,7 @@ const CreateFloors = () => {
     e.preventDefault();
 
     if(title == ""){
-      toast.warning("Fill the appropriate details", { type: "warning" });
+      return toast.warning("Fill the appropriate details", { type: "warning" });
     }
 
     const data = {

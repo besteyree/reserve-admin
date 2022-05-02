@@ -61,7 +61,6 @@ const ListFloors = () => {
     const { id, title, status } = restdetails;
     return (
       <tr key={id}>
-       
         <td>{title}</td>
         <td>{status}</td>
 
@@ -93,22 +92,27 @@ const ListFloors = () => {
 
   return (
     <>
-      <ToastContainer position="top-right" autoClose={5000} />
+      <ToastContainer position="top-right" />
 
       <Header />
 
+    
       <main id="main" className="main">
         <div className="pagetitle">
           <h1>Floor Details</h1>
-          <nav>
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">
-                <Link to="/">Home</Link>
-              </li>
-              <li className="breadcrumb-item">Floor</li>
-              <li className="breadcrumb-item active">Floor Details</li>
-            </ol>
-          </nav>
+          {localStorage.getItem("user-type") == 1 ? (
+            <></>
+          ) : (
+            <nav>
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item">
+                  <Link to="/">Home</Link>
+                </li>
+                <li className="breadcrumb-item">Floor</li>
+                <li className="breadcrumb-item active">Floor Details</li>
+              </ol>
+            </nav>
+          )}
 
           <Link to={`/createrestaurantfloor/${id}`}>
             <button type="submit" className="btn btn-primary">
@@ -125,7 +129,6 @@ const ListFloors = () => {
                   <table className="table datatable">
                     <thead>
                       <tr>
-                        
                         <th scope="col">Floor Name</th>
                         <th scope="col">Status</th>
                         <th scope="col">Edit</th>

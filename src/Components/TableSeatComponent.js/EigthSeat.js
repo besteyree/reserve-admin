@@ -57,7 +57,7 @@ function EigthSeat(props) {
         <div style={line}></div>
         <div style={midsec}>
           <div style={sideline}></div>
-          <Link to={`/viewtables/${props.data.AllId}`}>
+          <Link to={`/viewtables/${props.data.AllId}`} style={{ textDecoration: 'none' }}>
           <div style={square}>
             <h3 style={text}>{props.data.title}</h3>
           </div>
