@@ -23,10 +23,9 @@ const ListTableTypes = () => {
 
   let { id } = useParams();
 
-
   const fetchTableDetails = async (id) => {
     let res = 0;
-    if(id){
+    if (id) {
       res = await axios.get(`/get_table_type/${id}`).catch((err) => {
         console.log("Err", err);
       });
@@ -51,7 +50,7 @@ const ListTableTypes = () => {
 
     thisClick.closest("tr").remove();
     // window.location.reload(false);
-    return toast.warning(res.data.message, { type: "warning"});
+    return toast.warning(res.data.message, { type: "warning" });
   };
 
   useEffect(() => {
@@ -67,7 +66,7 @@ const ListTableTypes = () => {
 
         <td>
           <Link to={`/updatetabletypes/${id}`}>
-          <FiEdit2
+            <FiEdit2
               style={{
                 fontSize: "1.5rem",
                 marginRight: "0.5rem",
@@ -78,7 +77,7 @@ const ListTableTypes = () => {
         </td>
         <td>
           <div onClick={(e) => tabletypedelete(e, id)}>
-          <AiFillDelete
+            <AiFillDelete
               style={{
                 fontSize: "1.5rem",
                 marginRight: "0.5rem",
@@ -100,23 +99,26 @@ const ListTableTypes = () => {
       <main id="main" className="main">
         <div className="pagetitle">
           <h1>Table Types Details</h1>
-          <nav>
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">
-                <Link to="/">Home</Link>
-              </li>
-              <li className="breadcrumb-item">Table Type</li>
-              <li className="breadcrumb-item active">Table Type Details</li>
-            </ol>
-          </nav>
+
+          {localStorage.getItem("user-type") == 1 ? (
+            <></>
+          ) : (
+            <nav>
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item">
+                  <Link to="/">Home</Link>
+                </li>
+                <li className="breadcrumb-item">Table Type</li>
+                <li className="breadcrumb-item active">Table Type Details</li>
+              </ol>
+            </nav>
+          )}
 
           <Link to={`/createtabletype/${id}`}>
-          <button type="submit" className="btn btn-primary">
-           
+            <button type="submit" className="btn btn-primary">
               Create Table Type
-          </button>
+            </button>
           </Link>
-
         </div>
 
         <section className="section">
@@ -127,7 +129,6 @@ const ListTableTypes = () => {
                   <table className="table datatable">
                     <thead>
                       <tr>
-                        
                         <th scope="col">Table Type Name</th>
                         <th scope="col">Status</th>
                         <th scope="col">Edit</th>

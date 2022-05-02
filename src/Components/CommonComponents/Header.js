@@ -54,7 +54,7 @@ function Header() {
           <Container fluid>
             <Navbar.Toggle aria-controls="offcanvasNavbar" />
             <Navbar.Brand href="#" style={{ paddingLeft: "8px" }}>
-              Wegsoft
+              <Link to="/home" style={{ textDecoration: 'none' }}>Wegsoft</Link>
             </Navbar.Brand>
             <Navbar.Offcanvas
               style={{
@@ -73,15 +73,16 @@ function Header() {
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   {localStorage.getItem("user-type") == 1 ? (
                     <>
+                    
                       <ul className="sidebar-nav" id="sidebar-nav">
                         <li className="nav-item">
-                          <Link to="/home" className="nav-link ">
+                          <Link to="/home" style={{ textDecoration: 'none' }} className="nav-link ">
                             <i className="bi bi-grid"></i>
 
                             <span>Dashboard</span>
                           </Link>
                         </li>
-                      </ul>
+                      
 
                       <li className="nav-item">
                         <a
@@ -105,13 +106,13 @@ function Header() {
                           className="nav-content collapse "
                           data-bs-parent="#sidebar-nav"
                         >
-                          <Link to="/createvendor/null">
+                          <Link style={{ textDecoration: 'none' }} to="/createvendor/null">
                           <li>
                               <span>Create Vendors</span>
                           </li>
                           </Link>
                           <li>
-                            <Link to="/listvendor">
+                            <Link style={{ textDecoration: 'none' }} to="/listvendor">
                               <span>List Vendors</span>
                             </Link>
                           </li>
@@ -141,35 +142,39 @@ function Header() {
                           data-bs-parent="#sidebar-nav"
                         >
                           <li>
-                            <Link to="/createrestaurant">
+                            <Link style={{ textDecoration: 'none' }} to="/createrestaurant">
                               <span>Create Restaurants</span>
                             </Link>
                           </li>
                           <li>
-                            <Link to="/listrestaurant">
+                            <Link style={{ textDecoration: 'none' }} to="/listrestaurant">
                               <span>List Restaurants</span>
                             </Link>
                           </li>
                         </ul>
                       </li>
+
+                      </ul>
                     </>
                   ) : (
                     <>
+                    
                       <ul className="sidebar-nav" id="sidebar-nav">
                         <li className="nav-item">
-                          <Link to="/home" className="nav-link ">
+                          <Link style={{ textDecoration: 'none' }} to="/home" className="nav-link ">
                             <i className="bi bi-grid"></i>
                             <span>Dashboard</span>
                           </Link>
                         </li>
-                      </ul>
+                      
 
                       <li className="nav-item">
-                        <a
+                        <Link
+                        style={{ textDecoration: 'none' }}
                           className="nav-link collapsed"
                           data-bs-target="#floor-nav"
                           data-bs-toggle="collapse"
-                          href="#"
+                          to="#"
                         >
                           <FaLevelUpAlt
                             style={{
@@ -180,13 +185,13 @@ function Header() {
 
                           <span>Floors  </span>
                           <i className="bi bi-chevron-down ms-auto"></i>
-                        </a>
+                        </Link>
                         <ul
                           id="floor-nav"
                           className="nav-content collapse "
                           data-bs-parent="#sidebar-nav"
                         >
-                          <Link to={`/createrestaurantfloor/${id}`}>
+                          <Link style={{ textDecoration: 'none' }} to={`/createrestaurantfloor/${id}`}>
                           <li>
                             
                               <span>Create Floors</span>
@@ -194,7 +199,7 @@ function Header() {
                           </Link>
 
                           <li>
-                            <Link to="/floordetails">
+                            <Link style={{ textDecoration: 'none' }} to="/floordetails">
                               <span>List Floors</span>
                             </Link>
                           </li>
@@ -224,12 +229,12 @@ function Header() {
                           data-bs-parent="#sidebar-nav"
                         >
                           <li>
-                            <Link to={`/createtabletype/${id}`}>
+                            <Link style={{ textDecoration: 'none' }} to={`/createtabletype/${id}`}>
                               <span>Create Table Types</span>
                             </Link>
                           </li>
                           <li>
-                            <Link to="/tabletypes">
+                            <Link style={{ textDecoration: 'none' }} to="/tabletypes">
                               <span>List Tables Types</span>
                             </Link>
                           </li>
@@ -259,12 +264,12 @@ function Header() {
                           data-bs-parent="#sidebar-nav"
                         >
                           <li>
-                            <Link to="/createtable">
+                            <Link style={{ textDecoration: 'none' }} to="/createtable">
                               <span>Create Table</span>
                             </Link>
                           </li>
                           <li>
-                            <Link to="/listtable">
+                            <Link style={{ textDecoration: 'none' }} to="/listtable">
                               <span>List Tables</span>
                             </Link>
                           </li>
@@ -294,12 +299,14 @@ function Header() {
                           data-bs-parent="#sidebar-nav"
                         >
                           <li>
-                            <Link to="/listreservation">
+                            <Link style={{ textDecoration: 'none' }} to="/listreservation">
                               <span>List Reservation</span>
                             </Link>
                           </li>
                         </ul>
                       </li>
+                      </ul>
+                      
                     </>
                   )}
                 </Nav>
@@ -339,6 +346,7 @@ function Header() {
             </li>
           </ul>
         </nav>
+
       </header>
     </>
   );

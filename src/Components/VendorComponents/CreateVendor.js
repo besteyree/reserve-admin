@@ -1,8 +1,11 @@
 import Footer from "../CommonComponents/Footer";
 import Header from "../CommonComponents/Header";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import axios from "axios";
+
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
 
 function CreateVendor() {
   const [name, setName] = useState("");
@@ -11,10 +14,30 @@ function CreateVendor() {
   const [user_type, setUser_Type] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   let { id } = useParams();
 
   const submitVendor = async (e) => {
     e.preventDefault();
+
+    if (name == "") {
+      return toast.warning("Fill the appropriate details", { type: "warning" });
+    }
+
+    else if (email == "") {
+      toast.warning("Fill the appropriate details", { type: "warning" });
+    }
+
+    else if (phone == "") {
+      return toast.warning("Fill the appropriate details", { type: "warning" });
+    }
+
+    else if (password == "") {
+      return toast.warning("Fill the appropriate details", { type: "warning" });
+    } else {
+      
+    }
 
     const data = {
       name,
@@ -29,11 +52,19 @@ function CreateVendor() {
       console.log("Err", err);
     });
 
-    console.log(res.data);
+    setName("");
+    setEmail("");
+    setPhone("");
+    setUser_Type("");
+    setPassword("");
+
+    return toast.success(res.data.message, { type: "success" });
   };
 
   return (
     <>
+      <ToastContainer position="top-right" />
+
       <Header />
 
       <main id="main" className="main">
@@ -72,6 +103,7 @@ function CreateVendor() {
                           name="name"
                           onChange={(e) => setName(e.target.value)}
                           value={name}
+                          placeholder="Enter your Name"
                         />
                       </div>
                     </div>
@@ -90,6 +122,7 @@ function CreateVendor() {
                           className="form-control"
                           onChange={(e) => setEmail(e.target.value)}
                           value={email}
+                          placeholder="Enter your Email Address"
                         />
                       </div>
                     </div>
@@ -108,6 +141,7 @@ function CreateVendor() {
                           className="form-control"
                           onChange={(e) => setPhone(e.target.value)}
                           value={phone}
+                          placeholder="Enter your Phone Number"
                         />
                       </div>
                     </div>
@@ -152,6 +186,7 @@ function CreateVendor() {
                           className="form-control"
                           onChange={(e) => setPassword(e.target.value)}
                           value={password}
+                          placeholder="********"
                         />
                       </div>
                     </div>

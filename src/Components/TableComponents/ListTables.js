@@ -61,7 +61,7 @@ const ListTables = () => {
 
   console.log(TableDetail.data);
 
-  const renderList = TableDetail.map((TableDetail) => {
+  const renderList = TableDetail?.map((TableDetail) => {
     const { AllId, no_of_occupany } = TableDetail;
     console.log(TableDetail)
     return (

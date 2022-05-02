@@ -33,9 +33,9 @@ const CreateTableTypes = () => {
     e.preventDefault();
 
     if(title == ""){
-      toast.warning("Fill the appropriate details", { type: "warning" });
+      return toast.warning("Fill the appropriate details", { type: "warning" });
     } else if(detail == ""){
-      toast.warning("Fill the appropriate details", { type: "warning" });
+      return toast.warning("Fill the appropriate details", { type: "warning" });
     }
 
     const data = {

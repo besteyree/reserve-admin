@@ -8,6 +8,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { getVendors } from "../../redux/actions/vendorAction";
 
+import { FiEdit2 } from "react-icons/fi";
+import { AiFillDelete } from "react-icons/ai";
+
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
+
 function ListVendor() {
   const vendors = useSelector((state) => state.vendorReducer.vendors);
   const dispatch = useDispatch();
@@ -32,13 +38,25 @@ function ListVendor() {
         <td>{email}</td>
         <td>{phone}</td>
         <td>
-          <Link to={`/updatevendor/${id}`} className="btn btn-success">
-            Edit
+          <Link to={`/updatevendor/${id}`}>
+          <FiEdit2
+              style={{
+                fontSize: "1.5rem",
+                marginRight: "0.5rem",
+                color: "green",
+              }}
+            />
           </Link>
         </td>
         <td>
-          <Link to="" className="btn btn-danger">
-            Delete
+          <Link to="" >
+          <AiFillDelete
+              style={{
+                fontSize: "1.5rem",
+                marginRight: "0.5rem",
+                color: "red",
+              }}
+            />
           </Link>
         </td>
       </tr>
@@ -47,6 +65,8 @@ function ListVendor() {
 
   return (
     <>
+      <ToastContainer position="top-right" />
+
       <Header />
 
       <main id="main" className="main">

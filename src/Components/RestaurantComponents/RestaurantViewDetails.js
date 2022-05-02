@@ -17,12 +17,12 @@ function RestaurantViewDetails() {
   }, []);
   return (
     <>
-      <div style={{ margin: "90px" }}>
-        <button type="submit" className="btn btn-primary">
-          <Link to={`/createvendor/${id}`} style={{ color: "white" }}>
+      <div style={{ marginTop: "90px", marginLeft: "20px"  }}>
+        <Link to={`/createvendor/${id}`} style={{ color: "white" }}>
+          <button type="submit" className="btn btn-primary">
             Create Employee
-          </Link>
-        </button>
+          </button>
+        </Link>
       </div>
       <ListFloors />
 

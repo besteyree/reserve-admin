@@ -1,0 +1,40 @@
+* {
+  font-size: 16px;
+}
+
+.line {
+  margin-left: 2rem;
+  width: 6.25rem;
+  height: 0.625rem;
+  background-color: 	#800000;
+  border-radius: 8px;
+}
+
+.sideline {
+  margin: 0.625rem;
+  float: left;
+  width: 0.625rem;
+  height: 6.25rem;
+  background-color: 	#800000;
+  border-radius: 8px;
+  /* transform: rotate(90deg); */
+}
+
+.midsec {
+  overflow: hidden;
+  /* display: flex; */
+}
+
+.circle {
+  margin-top: 0.6rem;
+  float: left;
+  display: flex;
+  width: 6.25rem;
+  height: 6.25rem;
+  background-color: 	#800000;
+  border-radius: 50%;
+}
+
+.text {
+  margin: auto;
+}
