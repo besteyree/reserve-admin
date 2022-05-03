@@ -58,14 +58,14 @@ const CreateFloors = () => {
 
       <main id="main" className="main">
         <div className="pagetitle">
-          <h1>Create Floors</h1>
+          <h1>Add Floors</h1>
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
                 <Link to="/">Home</Link>
               </li>
-              <li className="breadcrumb-item">Restaurants</li>
-              <li className="breadcrumb-item active">Create Floors</li>
+              {/* <li className="breadcrumb-item">Restaurants</li> */}
+              <li className="breadcrumb-item active">Add Floors</li>
             </ol>
           </nav>
         </div>
@@ -127,7 +127,7 @@ const CreateFloors = () => {
                           className="btn btn-primary"
                           onClick={(e) => submitFloor(e)}
                         >
-                          Create Floor 
+                          Add Floor 
                         </button>
                       </div>
                     </div>

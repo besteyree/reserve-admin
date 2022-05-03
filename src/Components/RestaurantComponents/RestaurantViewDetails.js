@@ -20,7 +20,7 @@ function RestaurantViewDetails() {
       <div style={{ marginTop: "90px", marginLeft: "20px"  }}>
         <Link to={`/createvendor/${id}`} style={{ color: "white" }}>
           <button type="submit" className="btn btn-primary">
-            Create Employee
+            Add Employee
           </button>
         </Link>
       </div>

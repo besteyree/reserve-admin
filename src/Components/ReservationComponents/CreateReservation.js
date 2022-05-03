@@ -76,14 +76,14 @@ const CreateReservation = () => {
 
       <main id="main" className="main">
         <div className="pagetitle">
-          <h1>Create Reservation</h1>
+          <h1>Add Reservation</h1>
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
                 <Link to="/">Home</Link>
               </li>
               <li className="breadcrumb-item">Reservation</li>
-              <li className="breadcrumb-item active">Create Reservation</li>
+              <li className="breadcrumb-item active">Add Reservation</li>
             </ol>
           </nav>
         </div>
@@ -323,7 +323,7 @@ const CreateReservation = () => {
                           className="btn btn-primary"
                           onClick={(e) => createReservation(e)}
                         >
-                          Create Reservation
+                          Add Reservation
                         </button>
                       </div>
                     </div>

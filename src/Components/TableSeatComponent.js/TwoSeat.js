@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function TwoSeat(props) {
 
-  const [color] = useState(props.data.status == 0 ? "#7CFC00" : "#800000");
+  const [color] = useState(props.data.status == 0 ? "#7CFC00" : props.data.status == 1 ? "#800000" : '#43A6C6' );
  
 
   const line = {

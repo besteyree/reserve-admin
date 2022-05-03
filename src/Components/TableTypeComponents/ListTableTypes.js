@@ -116,7 +116,7 @@ const ListTableTypes = () => {
 
           <Link to={`/createtabletype/${id}`}>
             <button type="submit" className="btn btn-primary">
-              Create Table Type
+              Add Table Type
             </button>
           </Link>
         </div>

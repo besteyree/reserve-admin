@@ -108,7 +108,7 @@ function Header() {
                         >
                           <Link style={{ textDecoration: 'none' }} to="/createvendor/null">
                           <li>
-                              <span>Create Vendors</span>
+                              <span>Add Vendors</span>
                           </li>
                           </Link>
                           <li>
@@ -143,7 +143,7 @@ function Header() {
                         >
                           <li>
                             <Link style={{ textDecoration: 'none' }} to="/createrestaurant">
-                              <span>Create Restaurants</span>
+                              <span>Add Restaurants</span>
                             </Link>
                           </li>
                           <li>
@@ -194,7 +194,7 @@ function Header() {
                           <Link style={{ textDecoration: 'none' }} to={`/createrestaurantfloor/${id}`}>
                           <li>
                             
-                              <span>Create Floors</span>
+                              <span>Add Floors</span>
                           </li>
                           </Link>
 
@@ -230,7 +230,7 @@ function Header() {
                         >
                           <li>
                             <Link style={{ textDecoration: 'none' }} to={`/createtabletype/${id}`}>
-                              <span>Create Table Types</span>
+                              <span>Add Table Types</span>
                             </Link>
                           </li>
                           <li>
@@ -265,7 +265,7 @@ function Header() {
                         >
                           <li>
                             <Link style={{ textDecoration: 'none' }} to="/createtable">
-                              <span>Create Table</span>
+                              <span>Add Table</span>
                             </Link>
                           </li>
                           <li>

@@ -94,14 +94,14 @@ function CreateRestaurant() {
 
       <main id="main" className="main">
         <div className="pagetitle">
-          <h1>Create Restaurants</h1>
+          <h1>Add Restaurants</h1>
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
                 <Link to="/">Home</Link>
               </li>
               <li className="breadcrumb-item">Restaurants</li>
-              <li className="breadcrumb-item active">Create Restaurants</li>
+              <li className="breadcrumb-item active">Add Restaurants</li>
             </ol>
           </nav>
         </div>
