@@ -116,7 +116,7 @@ const ListFloors = () => {
 
           <Link to={`/createrestaurantfloor/${id}`}>
             <button type="submit" className="btn btn-primary">
-              Create Floor
+              Add Floor
             </button>
           </Link>
         </div>

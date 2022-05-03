@@ -2,14 +2,18 @@ import React, { useEffect, useState } from "react";
 import Footer from "../CommonComponents/Footer";
 import Header from "../CommonComponents/Header";
 import { Link } from "react-router-dom";
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { getreservation } from "../../redux/actions/reservationAction";
 import Pagination from "react-js-pagination";
+import { format } from "date-fns";
+import moment from 'react-moment';
 
 function ListReservation() {
   const [sortBy, setSortBy] = useState("");
+  const [startDate, setStartDate] = useState(null);
 
   const reservation = useSelector(
     (state) => state.reservationReducer.reservation
@@ -18,8 +22,7 @@ function ListReservation() {
 
   useEffect(() => {
     sortByWalkinReser();
-    
-  }, [sortBy]);
+  }, [sortBy,startDate]);
 
   const PageClick = () => {
     const { current_page, per_page, total } = reservation;
@@ -41,6 +44,7 @@ function ListReservation() {
   };
 
   const handlePageClick = (data) => {
+
     sortByWalkinReser(data);
   };
 
@@ -62,9 +66,19 @@ function ListReservation() {
   });
 
   const sortByWalkinReser = async (pageNumber = 1) => {
+    // const d = format(startDate, "Y-MM-dd");
+    const data ={
+      date: startDate,
+    };
+
+    console.log(data)
+
+
+
+    console.log(reservation);
     if (sortBy === "1") {
       const res = await axios
-        .post(`/is-walking?page=${pageNumber}`)
+        .post(`/is-walking?page=${pageNumber}`,data)
         .catch((err) => {
           console.log("Err", err);
         });
@@ -72,7 +86,7 @@ function ListReservation() {
       dispatch(getreservation(res.data));
     } else if (sortBy === "0") {
       const res = await axios
-        .post(`/is-reservation?page=${pageNumber}`)
+        .post(`/is-reservation?page=${pageNumber}`,data)
         .catch((err) => {
           console.log("Err", err);
         });
@@ -80,7 +94,7 @@ function ListReservation() {
       dispatch(getreservation(res.data));
     } else {
       const res = await axios
-        .get(`/getvendor_reservation?page=${pageNumber}`)
+        .post(`/getvendor_reservation?page=${pageNumber}`,data)
         .catch((err) => {
           console.log("Err", err);
         });
@@ -107,7 +121,7 @@ function ListReservation() {
           <Link to="/createreservation">
           <button type="submit" className="btn btn-primary">
            
-              Create Reservation
+              Add Reservation
           </button>
           </Link>
 
@@ -130,7 +144,29 @@ function ListReservation() {
                 <option value="1">Wakin</option>
                 <option value="0">Reservation</option>
               </select>
+              
             </div>
+          
+            <label
+                        for="inputText"
+                        className="col-sm-1 col-form-label"
+                      >
+                        Date
+                      </label>
+                      <div className="col-sm-2">
+                        <input
+                          type="date"
+                          className="form-control"
+                          name="date"
+                          onChange={(e) => setStartDate(e.target.value)}
+                          placeholder="Enter the Date"
+                          // onChange={(date) => setStartDate(date)}
+                          value={startDate}
+                        />
+                      </div>
+             
+              
+           
           </div>
         </div>
 

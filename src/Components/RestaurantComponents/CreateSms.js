@@ -31,14 +31,14 @@ const CreateSms = () => {
 
       <main id="main" className="main">
         <div className="pagetitle">
-          <h1>Create SMS</h1>
+          <h1>Add SMS</h1>
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
                 <Link to="/">Home</Link>
               </li>
               <li className="breadcrumb-item">SMS</li>
-              <li className="breadcrumb-item active">Create SMS</li>
+              <li className="breadcrumb-item active">Add SMS</li>
             </ol>
           </nav>
         </div>
@@ -94,7 +94,7 @@ const CreateSms = () => {
                           className="btn btn-primary"
                           onClick={(e) => submitSms(e)}
                         >
-                          Create SMS
+                          Add SMS
                         </button>
                       </div>
                     </div>

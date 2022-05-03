@@ -84,14 +84,14 @@ const CreateTables = () => {
 
       <main id="main" className="main">
         <div className="pagetitle">
-          <h1>Create Tables</h1>
+          <h1>Add Tables</h1>
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
                 <Link to="/">Home</Link>
               </li>
               <li className="breadcrumb-item">Tables</li>
-              <li className="breadcrumb-item active">Create Tables</li>
+              <li className="breadcrumb-item active">Add Tables</li>
             </ol>
           </nav>
         </div>
@@ -216,7 +216,7 @@ const CreateTables = () => {
                           className="btn btn-primary"
                           onClick={(e) => submitTables(e)}
                         >
-                          Create Table
+                          Add Table
                         </button>
                       </div>
                     </div>

@@ -58,14 +58,14 @@ const UpdateVendor = () => {
 
       <main id="main" className="main">
         <div className="pagetitle">
-          <h1>Create Vendor</h1>
+          <h1>Update Vendor</h1>
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
                 <Link to="/">Home</Link>
               </li>
               <li className="breadcrumb-item">Vendor</li>
-              <li className="breadcrumb-item active">Create Vendor</li>
+              <li className="breadcrumb-item active">Update Vendor</li>
             </ol>
           </nav>
         </div>

@@ -65,14 +65,14 @@ const CreateTableTypes = () => {
 
       <main id="main" className="main">
         <div className="pagetitle">
-          <h1>Create Table Types</h1>
+          <h1>Add Table Types</h1>
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
                 <Link to="/">Home</Link>
               </li>
               <li className="breadcrumb-item">Tables</li>
-              <li className="breadcrumb-item active">Create Table Types</li>
+              <li className="breadcrumb-item active">Add Table Types</li>
             </ol>
           </nav>
         </div>
@@ -153,7 +153,7 @@ const CreateTableTypes = () => {
                           className="btn btn-primary"
                           onClick={(e) => submitTableType(e)}
                         >
-                          Create Table Type
+                          Add Table Type
                         </button>
                       </div>
                     </div>

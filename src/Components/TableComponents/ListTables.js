@@ -28,6 +28,8 @@ const ListTables = () => {
       .catch((err) => {
         console.log("Err", err);
       });
+
+      // console.log(res.data);
     dispatch(getlistTable(res.data));
   };
 
@@ -59,7 +61,7 @@ const ListTables = () => {
     fetchTableDetails(data);
   };
 
-  console.log(TableDetail.data);
+  console.log(TableDetail);
 
   const renderList = TableDetail?.map((TableDetail) => {
     const { AllId, no_of_occupany } = TableDetail;

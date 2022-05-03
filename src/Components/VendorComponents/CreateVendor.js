@@ -69,14 +69,14 @@ function CreateVendor() {
 
       <main id="main" className="main">
         <div className="pagetitle">
-          <h1>Create Vendor</h1>
+          <h1>Add Vendor</h1>
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
                 <Link to="/">Home</Link>
               </li>
               <li className="breadcrumb-item">Vendor</li>
-              <li className="breadcrumb-item active">Create Vendor</li>
+              <li className="breadcrumb-item active">Add Vendor</li>
             </ol>
           </nav>
         </div>
@@ -198,7 +198,7 @@ function CreateVendor() {
                           className="btn btn-primary"
                           onClick={(e) => submitVendor(e)}
                         >
-                          Submit Form
+                          Add Vendor
                         </button>
                       </div>
                     </div>
