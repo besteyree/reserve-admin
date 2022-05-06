@@ -14,6 +14,10 @@ import TwoSeat from "../TableSeatComponent.js/TwoSeat";
 import FourSeat from "../TableSeatComponent.js/FourSeat";
 import SixSeat from "../TableSeatComponent.js/SixSeat";
 import EigthSeat from "../TableSeatComponent.js/EigthSeat";
+import OneSeat from "../TableSeatComponent.js/OneSeat";
+import ThreeSeat from "../TableSeatComponent.js/ThreeSeat";
+import FiveSeat from "../TableSeatComponent.js/FiveSeat";
+import SevenSeat from "../TableSeatComponent.js/SevenSeat";
 
 const ListTables = () => {
   const TableDetail = useSelector((state) => state.restaurantReducer.listtable);
@@ -23,13 +27,9 @@ const ListTables = () => {
   const dispatch = useDispatch();
 
   const fetchTableDetails = async (pageNumber = 1) => {
-    const res = await axios
-      .get(`/group_table`)
-      .catch((err) => {
-        console.log("Err", err);
-      });
-
-      // console.log(res.data);
+    const res = await axios.get(`/group_table`).catch((err) => {
+      console.log("Err", err);
+    });
     dispatch(getlistTable(res.data));
   };
 
@@ -62,25 +62,51 @@ const ListTables = () => {
   };
 
   console.log(TableDetail);
-
+  let temp = "";
   const renderList = TableDetail?.map((TableDetail) => {
-    const { AllId, no_of_occupany } = TableDetail;
-    console.log(TableDetail)
+    const { AllId, no_of_occupany, FloorTitle, fid } = TableDetail;
+    // console.log(TableDetail)
     return (
-      <div key={AllId}>
-        
-        {no_of_occupany == 2 ? (
-          <TwoSeat data={TableDetail} />
-        ) : no_of_occupany == 4 ? (
-          <FourSeat data={TableDetail} />
-        ) : no_of_occupany == 6 ? (
-          <SixSeat data={TableDetail} />
-        ) : no_of_occupany == 8 ? (
-          <EigthSeat data={TableDetail} />
-        ) : (
-          <h1>No Data Found</h1>
-        )}
-      </div>
+      <>
+        {/* <div style={{ textAlign: "center" }}> */}
+          {temp != fid ? (
+            <>
+              <div style={{ display: "none" }}>{(temp = fid)}</div>
+
+              <div
+                className="alert alert-primary alert-dismissible fade show"
+                style={{ clear: "both", textAlign: "center" }}
+              >
+                {FloorTitle}
+              </div>
+              
+            </>
+          ) : (
+            <></>
+          )}
+          <div key={AllId}>
+            {no_of_occupany == 1 ? (
+              <OneSeat data={TableDetail} />
+            ) : no_of_occupany == 2 ? (
+              <TwoSeat data={TableDetail} />
+            ) : no_of_occupany == 3 ? (
+              <ThreeSeat data={TableDetail} />
+            ) : no_of_occupany == 4 ? (
+              <FourSeat data={TableDetail} />
+            ) : no_of_occupany == 5 ? (
+              <FiveSeat data={TableDetail} />
+            ) : no_of_occupany == 6 ? (
+              <SixSeat data={TableDetail} />
+            ) : no_of_occupany == 7 ? (
+              <SevenSeat data={TableDetail} />
+            ) : no_of_occupany == 8 ? (
+              <EigthSeat data={TableDetail} />
+            ) : (
+              <>No Data Found</>
+            )}
+          </div>
+        {/* </div> */}
+      </>
     );
   });
 

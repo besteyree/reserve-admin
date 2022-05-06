@@ -99,7 +99,7 @@ const CreateReservation = () => {
                         for="inputText"
                         className="col-sm-2 col-form-label"
                       >
-                        Name
+                        Guest Name
                       </label>
                       <div className="col-sm-10">
                         <input
@@ -107,7 +107,7 @@ const CreateReservation = () => {
                           className="form-control"
                           name="name"
                           onChange={(e) => setName(e.target.value)}
-                          placeholder="Enter the Name"
+                          placeholder="Enter the Guest Name"
                           value={name}
                         />
                       </div>
@@ -118,7 +118,7 @@ const CreateReservation = () => {
                         for="inputText"
                         className="col-sm-2 col-form-label"
                       >
-                        Phone
+                        Guest Phone
                       </label>
                       <div className="col-sm-10">
                         <input
@@ -126,7 +126,7 @@ const CreateReservation = () => {
                           className="form-control"
                           name="phone"
                           onChange={(e) => setPhone(e.target.value)}
-                          placeholder="Enter the Phone Number"
+                          placeholder="Enter the Guest Phone Number"
                           value={phone}
                         />
                       </div>
@@ -190,7 +190,7 @@ const CreateReservation = () => {
                         for="inputText"
                         className="col-sm-1 col-form-label"
                       >
-                        No of Ocuupancy
+                        Number of People
                       </label>
                       <div className="col-sm-2">
                         <input
@@ -205,7 +205,9 @@ const CreateReservation = () => {
                     </div>
 
                     <div className="row mb-3">
-                      <label className="col-sm-2 col-form-label">Type</label>
+                      <label className="col-sm-2 col-form-label">
+                        Reservation Status
+                      </label>
                       <div className="col-sm-2">
                         <select
                           className="form-select"
@@ -214,9 +216,12 @@ const CreateReservation = () => {
                           onChange={(e) => setType(e.target.value)}
                           value={type}
                         >
-                          <option selected="true">Select your Type</option>
-                          <option value="1">Priority</option>
+                          <option selected="true">
+                            Select your Reservation Status
+                          </option>
+                          <option value="1">Confirmed</option>
                           <option value="2">Waitlist</option>
+                          <option value="3">Seated</option>
                         </select>
                       </div>
 
@@ -257,7 +262,7 @@ const CreateReservation = () => {
 
                     <div className="row mb-3">
                       <label className="col-sm-2 col-form-label">
-                        Table Type
+                        Seat Option
                       </label>
                       <div className="col-sm-2">
                         <select
@@ -268,7 +273,7 @@ const CreateReservation = () => {
                           value={table_type_id}
                         >
                           <option selected="true">
-                            Select your Table Type
+                            Select your Seat Option
                           </option>
 
                           {listTableDetail?.data?.map((item) => {
@@ -294,6 +299,46 @@ const CreateReservation = () => {
                           placeholder="Is Walkin"
                           value={is_walkin}
                         />
+                      </div>
+
+                      <label className="col-sm-1 col-form-label">
+                        Source of Reservation
+                      </label>
+                      <div className="col-sm-2">
+                        <select
+                          className="form-select"
+                          aria-label="Default select example"
+                          name="type"
+                          onChange={(e) => setType(e.target.value)}
+                          value={type}
+                        >
+                          <option selected="true">
+                            Select your Source of Reservation
+                          </option>
+                          <option value="1">Zomato</option>
+                          <option value="2">Online</option>
+                          <option value="3">Personal</option>
+                          <option value="4">Official</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="row mb-3">
+                      <label
+                        for="inputText"
+                        className="col-sm-2 col-form-label"
+                      >
+                        Assign Table
+                      </label>
+                      <div className="col-sm-2">
+                        <Link to="/assigntables/null">   
+                      <button
+                          type="submit"
+                          className="btn btn-secondary"
+                        >
+                          Select Table
+                        </button>
+                        </Link>
                       </div>
                     </div>
 

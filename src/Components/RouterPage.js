@@ -31,15 +31,17 @@ import FourSeat from "./TableSeatComponent.js/FourSeat";
 import TwoSeat from "./TableSeatComponent.js/TwoSeat";
 import EigthSeat from "./TableSeatComponent.js/EigthSeat";
 import SixSeat from "./TableSeatComponent.js/SixSeat";
+import ThreeSeat from "./TableSeatComponent.js/ThreeSeat";
+import OneSeat from "./TableSeatComponent.js/OneSeat";
+import FiveSeat from "./TableSeatComponent.js/FiveSeat";
+import SevenSeat from "./TableSeatComponent.js/SevenSeat";
 
 function RouterPage() {
   return (
     <div>
       <Router>
         <Routes>
-
-        <Route path="/eightseat" element={<SixSeat />} />
-
+        <Route path="/2" element={<TwoSeat />} />
 
           {/* Checking Login route for both super admin admin */}
           <Route exact path="/" element={<CheckLoginRoute />}>
@@ -77,12 +79,8 @@ function RouterPage() {
             <Route path="/viewtables/:id" element={<ViewTable />} />
           </Route>
 
-          <Route exact path="/fourseat" element={<PrivateRoute />}>
-            <Route path="/fourseat" element={<FourSeat />} />
-          </Route>
-
-          <Route exact path="/twoseat" element={<PrivateRoute />}>
-            <Route path="/twoseat" element={<TwoSeat />} />
+          <Route exact path="/assigntables/:id" element={<PrivateRoute />}>
+            <Route path="/assigntables/:id" element={<ViewTable />} />
           </Route>
 
           {/* -----------------------------End--------------------------------- */}
