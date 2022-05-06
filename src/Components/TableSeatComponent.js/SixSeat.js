@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function SixSeat(props) {
-  
-  const [color] = useState(props.data.status == 0 ? "#7CFC00" : props.data.status == 1 ? "#800000" : '#43A6C6' );
-
+  const [color] = useState(
+    props.data.status == 0
+      ? "#7CFC00"
+      : props.data.status == 1
+      ? "#800000"
+      : "#43A6C6"
+  );
 
   const line = {
     display: "inline-block",
@@ -22,12 +26,10 @@ function SixSeat(props) {
     height: "6.25rem",
     backgroundColor: color,
     borderRadius: "8px",
-    /* transform: rotate(90deg); */
   };
 
   const midsec = {
     overflow: "hidden",
-    /* display: flex; */
   };
 
   const square = {
@@ -47,10 +49,9 @@ function SixSeat(props) {
 
   const align = {
     float: "left",
-    //   marginTop: "6.25rem",
     marginLeft: "1.5rem",
   };
-  console.log(square);
+
   return (
     <>
       <div style={align}>
@@ -59,7 +60,10 @@ function SixSeat(props) {
 
         <div style={midsec}>
           <div style={sideline}></div>
-          <Link to={`/viewtables/${props.data.AllId}`} style={{ textDecoration: 'none' }}>
+          <Link
+            to={`/viewtables/${props.data.AllId}`}
+            style={{ textDecoration: "none" }}
+          >
             <div style={square}>
               <h3 style={text}>{props.data.title}</h3>
             </div>
